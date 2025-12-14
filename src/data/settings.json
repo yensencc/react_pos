@@ -1,12 +1,12 @@
 {
   "businessName": "",
-  "address": "cualquiera",
-  "phone": "737-898-9896",
+  "address": "address here",
+  "phone": "phone number here",
   "taxRate": 6.25,
   "footerNote": "Gracias por su compra!",
   "logo": "/assets/logo.png",
   "paymentFees": {
     "creditPercent": 2.6,
-    "debitPercent": 2.6
+    "debitPercent": 0.2
   }
 }
