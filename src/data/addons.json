@@ -1,0 +1,32 @@
+[
+  {
+    "id": 101,
+    "name": "Extra Cheese",
+    "price": 0.75
+  },
+  {
+    "id": 102,
+    "name": "Bacon",
+    "price": 1.25
+  },
+  {
+    "id": 103,
+    "name": "Avocado",
+    "price": 1.5
+  },
+  {
+    "id": 104,
+    "name": "Large Size",
+    "price": 0.99
+  },
+  {
+    "id": 105,
+    "name": "Ketchup Packet",
+    "price": 0
+  },
+  {
+    "id": 106,
+    "name": "Carnitas",
+    "price": 5
+  }
+]

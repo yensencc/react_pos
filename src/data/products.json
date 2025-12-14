@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Cheeseburger",
+    "price": 6.5,
+    "categoryId": 1,
+    "addonIds": [
+      101,
+      102
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Veggie Burger",
+    "price": 6,
+    "categoryId": 1,
+    "addonIds": [
+      101,
+      103
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Fries",
+    "price": 2.5,
+    "categoryId": 2,
+    "addonIds": [
+      104,
+      105
+    ],
+    "rewardEligible": true
+  },
+  {
+    "id": 5,
+    "name": "Coffee",
+    "price": 2,
+    "categoryId": 3,
+    "addonIds": [
+      104,
+      105
+    ],
+    "rewardEligible": true
+  }
+]

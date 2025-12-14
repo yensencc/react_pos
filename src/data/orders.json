@@ -1,0 +1,1597 @@
+[
+  {
+    "id": "omj3quhzdctkj",
+    "createdAt": "2025-12-13T03:36:06.025Z",
+    "customer": {
+      "id": "c2",
+      "name": "Bob Jones",
+      "phone": "555-5678",
+      "city": "Rivertown"
+    },
+    "items": [
+      {
+        "lineId": "mj3quedlky1g80",
+        "id": 1,
+        "name": "Cheeseburger",
+        "price": 6.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 101,
+            "name": "Extra Cheese",
+            "price": 0.75
+          },
+          {
+            "id": 102,
+            "name": "Bacon",
+            "price": 1.25
+          }
+        ]
+      }
+    ],
+    "subtotal": 8.5,
+    "taxRate": 8,
+    "tax": 0.68,
+    "total": 9.18,
+    "status": "sent",
+    "canceled": true,
+    "cancelReason": "",
+    "updatedAt": "2025-12-13T05:59:51.715Z"
+  },
+  {
+    "id": "omj3qz6dxpwss",
+    "createdAt": "2025-12-13T03:39:44.277Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj3qyy6dj3djlk",
+        "id": 3,
+        "name": "Fries",
+        "price": 2.5,
+        "qty": 2,
+        "addons": [
+          {
+            "id": 105,
+            "name": "Ketchup Packet",
+            "price": 0
+          },
+          {
+            "id": 104,
+            "name": "Large Size",
+            "price": 0.99
+          }
+        ]
+      }
+    ],
+    "subtotal": 6.98,
+    "taxRate": 8,
+    "tax": 0.5584,
+    "total": 7.5384,
+    "status": "sent"
+  },
+  {
+    "id": "omj3r8xxj7nx6",
+    "createdAt": "2025-12-13T03:47:19.879Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj3r8ofzhxcu1p",
+        "id": 2,
+        "name": "Veggie Burger",
+        "price": 6,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 101,
+            "name": "Extra Cheese",
+            "price": 0.75
+          }
+        ]
+      },
+      {
+        "lineId": "mj3r8u3y5yngee",
+        "id": 5,
+        "name": "Coffee",
+        "price": 2,
+        "qty": 1,
+        "addons": []
+      }
+    ],
+    "subtotal": 8.75,
+    "taxRate": 8,
+    "tax": 0.7000000000000001,
+    "total": 9.45,
+    "status": "sent"
+  },
+  {
+    "id": "omj3rryshv13i",
+    "createdAt": "2025-12-13T04:02:07.457Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj3rrxr5iy0eem",
+        "id": 1,
+        "name": "Cheeseburger",
+        "price": 6.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 101,
+            "name": "Extra Cheese",
+            "price": 0.75
+          },
+          {
+            "id": 102,
+            "name": "Bacon",
+            "price": 1.25
+          }
+        ]
+      }
+    ],
+    "subtotal": 8.5,
+    "taxRate": 8,
+    "tax": 0.68,
+    "total": 9.18,
+    "status": "sent"
+  },
+  {
+    "id": "omj3rsayaok5f",
+    "createdAt": "2025-12-13T04:02:23.218Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj3rsa2a29w2wg",
+        "id": 3,
+        "name": "Fries",
+        "price": 2.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 104,
+            "name": "Large Size",
+            "price": 0.99
+          },
+          {
+            "id": 105,
+            "name": "Ketchup Packet",
+            "price": 0
+          }
+        ]
+      }
+    ],
+    "subtotal": 3.49,
+    "taxRate": 8,
+    "tax": 0.2792,
+    "total": 3.7692,
+    "status": "sent"
+  },
+  {
+    "id": "omj3sgj6ova36",
+    "createdAt": "2025-12-13T04:21:13.632Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj3sg5nu57yhdn",
+        "id": 3,
+        "name": "Fries",
+        "price": 2.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 104,
+            "name": "Large Size",
+            "price": 0.99
+          },
+          {
+            "id": 105,
+            "name": "Ketchup Packet",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "lineId": "mj3sgc0rjpf0ki",
+        "id": 1,
+        "name": "Cheeseburger",
+        "price": 6.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 102,
+            "name": "Bacon",
+            "price": 1.25
+          }
+        ]
+      }
+    ],
+    "subtotal": 11.24,
+    "taxRate": 8,
+    "tax": 0.8992,
+    "total": 12.1392,
+    "status": "sent"
+  },
+  {
+    "id": "omj3t63rtxuil",
+    "createdAt": "2025-12-13T04:41:06.713Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj3t2tx2uognrb",
+        "id": 1,
+        "name": "Cheeseburger",
+        "price": 6.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 101,
+            "name": "Extra Cheese",
+            "price": 0.75
+          },
+          {
+            "id": 102,
+            "name": "Bacon",
+            "price": 1.25
+          }
+        ]
+      }
+    ],
+    "subtotal": 8.5,
+    "taxRate": 8,
+    "tax": 0.68,
+    "total": 9.18,
+    "status": "sent",
+    "canceled": true,
+    "cancelReason": "",
+    "updatedAt": "2025-12-13T22:05:04.151Z"
+  },
+  {
+    "id": "omj3te2pzf41g",
+    "createdAt": "2025-12-13T04:47:18.600Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj3tcnkvl46i4g",
+        "id": 1,
+        "name": "Cheeseburger",
+        "price": 6.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 101,
+            "name": "Extra Cheese",
+            "price": 0.75
+          },
+          {
+            "id": 102,
+            "name": "Bacon",
+            "price": 1.25
+          }
+        ]
+      }
+    ],
+    "subtotal": 8.5,
+    "taxRate": 8,
+    "tax": 0.68,
+    "total": 9.18,
+    "status": "sent"
+  },
+  {
+    "id": "omj3u7ea0pcj1",
+    "createdAt": "2025-12-13T05:10:06.600Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj3u6ea11u4xhh",
+        "id": 3,
+        "name": "Fries",
+        "price": 2.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 104,
+            "name": "Large Size",
+            "price": 0.99
+          },
+          {
+            "id": 105,
+            "name": "Ketchup Packet",
+            "price": 0
+          }
+        ]
+      }
+    ],
+    "subtotal": 3.49,
+    "taxRate": 8,
+    "tax": 0.2792,
+    "total": 3.7692,
+    "status": "sent"
+  },
+  {
+    "id": "omj3ufuu0cxmp",
+    "createdAt": "2025-12-13T05:16:41.304Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj3ufu0fpvem3l",
+        "id": 3,
+        "name": "Fries",
+        "price": 2.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 104,
+            "name": "Large Size",
+            "price": 0.99
+          },
+          {
+            "id": 105,
+            "name": "Ketchup Packet",
+            "price": 0
+          }
+        ]
+      }
+    ],
+    "subtotal": 3.49,
+    "taxRate": 8,
+    "tax": 0.2792,
+    "total": 3.7692,
+    "status": "sent"
+  },
+  {
+    "id": "omj3ug5aw17pg",
+    "createdAt": "2025-12-13T05:16:54.872Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj3ug3ewzsr39z",
+        "id": 4,
+        "name": "Soft Drink",
+        "price": 1.75,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 104,
+            "name": "Large Size",
+            "price": 0.99
+          }
+        ]
+      }
+    ],
+    "subtotal": 2.74,
+    "taxRate": 8,
+    "tax": 0.21920000000000003,
+    "total": 2.9592,
+    "status": "sent",
+    "canceled": true,
+    "cancelReason": "",
+    "updatedAt": "2025-12-13T05:27:44.996Z"
+  },
+  {
+    "id": "omj3vjbkwhs2m",
+    "createdAt": "2025-12-13T05:47:22.592Z",
+    "customer": {
+      "id": "cmj3vini2",
+      "name": "Alejandro",
+      "phone": "8785705692",
+      "city": "Round Rock"
+    },
+    "items": [
+      {
+        "lineId": "mj3vixwlfgher6",
+        "id": 1,
+        "name": "Cheeseburger",
+        "price": 6.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 101,
+            "name": "Extra Cheese",
+            "price": 0.75
+          },
+          {
+            "id": 102,
+            "name": "Bacon",
+            "price": 1.25
+          }
+        ]
+      },
+      {
+        "lineId": "mj3vizkthbb0n1",
+        "id": 2,
+        "name": "Veggie Burger",
+        "price": 6,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 103,
+            "name": "Avocado",
+            "price": 1.5
+          }
+        ]
+      }
+    ],
+    "subtotal": 16,
+    "taxRate": 8,
+    "tax": 1.28,
+    "total": 17.28,
+    "status": "sent",
+    "canceled": true,
+    "cancelReason": "",
+    "updatedAt": "2025-12-13T05:56:26.464Z"
+  },
+  {
+    "id": "omj3wwms3r457",
+    "createdAt": "2025-12-13T06:25:43.251Z",
+    "customer": {
+      "id": "cmj3ww5ha",
+      "name": "hect",
+      "phone": "567-976-5432",
+      "city": "kyle"
+    },
+    "items": [
+      {
+        "lineId": "mj3wwc3ea0bnay",
+        "id": 3,
+        "name": "Fries",
+        "price": 2.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 104,
+            "name": "Large Size",
+            "price": 0.99
+          },
+          {
+            "id": 105,
+            "name": "Ketchup Packet",
+            "price": 0
+          }
+        ]
+      }
+    ],
+    "subtotal": 3.49,
+    "taxRate": 8,
+    "tax": 0.2792,
+    "total": 3.7692,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj3wxe5nvnpe",
+    "createdAt": "2025-12-13T06:26:18.731Z",
+    "customer": {
+      "id": "cmj3vini2",
+      "name": "Alejandro",
+      "phone": "8785705692",
+      "city": "Round Rock"
+    },
+    "items": [
+      {
+        "lineId": "mj3wwv3jxgs1a2",
+        "id": 6,
+        "name": "Picadera",
+        "price": 10,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 106,
+            "name": "Carnitas",
+            "price": 5
+          }
+        ]
+      }
+    ],
+    "subtotal": 15,
+    "taxRate": 8,
+    "tax": 1.2,
+    "total": 16.2,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj3wzhj9ahj5",
+    "createdAt": "2025-12-13T06:27:56.421Z",
+    "customer": {
+      "id": "cmj3wyne3",
+      "name": "tyu",
+      "phone": "856-876-9865",
+      "city": "austin"
+    },
+    "items": [
+      {
+        "lineId": "mj3wyqxp2wjxhi",
+        "id": 3,
+        "name": "Fries",
+        "price": 2.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 104,
+            "name": "Large Size",
+            "price": 0.99
+          },
+          {
+            "id": 105,
+            "name": "Ketchup Packet",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "lineId": "mj3wz7k6lnoayq",
+        "id": 1,
+        "name": "Cheeseburger",
+        "price": 6.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 101,
+            "name": "Extra Cheese",
+            "price": 0.75
+          },
+          {
+            "id": 102,
+            "name": "Bacon",
+            "price": 1.25
+          }
+        ]
+      }
+    ],
+    "subtotal": 11.99,
+    "taxRate": 8,
+    "tax": 0.9592,
+    "total": 12.949200000000001,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4jg68vpmlp",
+    "createdAt": "2025-12-13T16:56:46.495Z",
+    "customer": {
+      "id": "cmj3vini2",
+      "name": "Alejandro",
+      "phone": "8785705692",
+      "city": "Round Rock"
+    },
+    "items": [
+      {
+        "lineId": "mj4jg2zrrhvf3u",
+        "id": 1,
+        "name": "Cheeseburger",
+        "price": 6.5,
+        "qty": 1,
+        "addons": []
+      }
+    ],
+    "subtotal": 6.5,
+    "taxRate": 8,
+    "tax": 0.52,
+    "total": 7.02,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4jhgvsu9it",
+    "createdAt": "2025-12-13T16:57:46.936Z",
+    "customer": {
+      "id": "cmj3vini2",
+      "name": "Alejandro",
+      "phone": "8785705692",
+      "city": "Round Rock",
+      "points": 1
+    },
+    "items": [
+      {
+        "lineId": "mj4jhevkmp50lr",
+        "id": 1,
+        "name": "Cheeseburger",
+        "price": 6.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 101,
+            "name": "Extra Cheese",
+            "price": 0.75
+          },
+          {
+            "id": 102,
+            "name": "Bacon",
+            "price": 1.25
+          }
+        ]
+      }
+    ],
+    "subtotal": 8.5,
+    "taxRate": 8,
+    "tax": 0.68,
+    "total": 9.18,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4jhqy9m2fd",
+    "createdAt": "2025-12-13T16:57:59.985Z",
+    "customer": {
+      "id": "cmj3vini2",
+      "name": "Alejandro",
+      "phone": "8785705692",
+      "city": "Round Rock",
+      "points": 2
+    },
+    "items": [
+      {
+        "lineId": "mj4jhp75oq4q6u",
+        "id": 5,
+        "name": "Coffee",
+        "price": 2,
+        "qty": 1,
+        "addons": []
+      },
+      {
+        "lineId": "mj4jhpioufj3bq",
+        "id": 4,
+        "name": "Soft Drink",
+        "price": 1.75,
+        "qty": 1,
+        "addons": []
+      }
+    ],
+    "subtotal": 3.75,
+    "taxRate": 8,
+    "tax": 0.3,
+    "total": 4.05,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4ji1tdndxi",
+    "createdAt": "2025-12-13T16:58:14.065Z",
+    "customer": {
+      "id": "cmj3vini2",
+      "name": "Alejandro",
+      "phone": "8785705692",
+      "city": "Round Rock",
+      "points": 3
+    },
+    "items": [
+      {
+        "lineId": "mj4jhzbt0q9pbv",
+        "id": 6,
+        "name": "Picadera",
+        "price": 10,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 106,
+            "name": "Carnitas",
+            "price": 5
+          }
+        ]
+      }
+    ],
+    "subtotal": 15,
+    "taxRate": 8,
+    "tax": 1.2,
+    "total": 16.2,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4jiaq1zxoq",
+    "createdAt": "2025-12-13T16:58:25.609Z",
+    "customer": {
+      "id": "cmj3vini2",
+      "name": "Alejandro",
+      "phone": "8785705692",
+      "city": "Round Rock",
+      "points": 4
+    },
+    "items": [
+      {
+        "lineId": "mj4ji905af5rd4",
+        "id": 2,
+        "name": "Veggie Burger",
+        "price": 6,
+        "qty": 1,
+        "addons": []
+      }
+    ],
+    "subtotal": 6,
+    "taxRate": 8,
+    "tax": 0.48,
+    "total": 6.48,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4jiftdhxip",
+    "createdAt": "2025-12-13T16:58:32.209Z",
+    "customer": {
+      "id": "cmj3vini2",
+      "name": "Alejandro",
+      "phone": "8785705692",
+      "city": "Round Rock",
+      "points": 5
+    },
+    "items": [
+      {
+        "lineId": "mj4jieltrgyehg",
+        "id": 1,
+        "name": "Cheeseburger",
+        "price": 6.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 101,
+            "name": "Extra Cheese",
+            "price": 0.75
+          },
+          {
+            "id": 102,
+            "name": "Bacon",
+            "price": 1.25
+          }
+        ]
+      }
+    ],
+    "subtotal": 8.5,
+    "taxRate": 8,
+    "tax": 0.68,
+    "total": 9.18,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4jijfdluf8",
+    "createdAt": "2025-12-13T16:58:36.889Z",
+    "customer": {
+      "id": "cmj3vini2",
+      "name": "Alejandro",
+      "phone": "8785705692",
+      "city": "Round Rock",
+      "points": 6
+    },
+    "items": [
+      {
+        "lineId": "mj4jiiianhddck",
+        "id": 3,
+        "name": "Fries",
+        "price": 2.5,
+        "qty": 1,
+        "addons": []
+      }
+    ],
+    "subtotal": 2.5,
+    "taxRate": 8,
+    "tax": 0.2,
+    "total": 2.7,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4jin1evowf",
+    "createdAt": "2025-12-13T16:58:41.570Z",
+    "customer": {
+      "id": "cmj3vini2",
+      "name": "Alejandro",
+      "phone": "8785705692",
+      "city": "Round Rock",
+      "points": 7
+    },
+    "items": [
+      {
+        "lineId": "mj4jim9mdzo4si",
+        "id": 3,
+        "name": "Fries",
+        "price": 2.5,
+        "qty": 1,
+        "addons": []
+      }
+    ],
+    "subtotal": 2.5,
+    "taxRate": 8,
+    "tax": 0.2,
+    "total": 2.7,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4jirzevgyj",
+    "createdAt": "2025-12-13T16:58:47.978Z",
+    "customer": {
+      "id": "cmj3vini2",
+      "name": "Alejandro",
+      "phone": "8785705692",
+      "city": "Round Rock",
+      "points": 8
+    },
+    "items": [
+      {
+        "lineId": "mj4jir7uaj833f",
+        "id": 3,
+        "name": "Fries",
+        "price": 2.5,
+        "qty": 1,
+        "addons": []
+      }
+    ],
+    "subtotal": 2.5,
+    "taxRate": 8,
+    "tax": 0.2,
+    "total": 2.7,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4jiviantjd",
+    "createdAt": "2025-12-13T16:58:52.546Z",
+    "customer": {
+      "id": "cmj3vini2",
+      "name": "Alejandro",
+      "phone": "8785705692",
+      "city": "Round Rock",
+      "points": 9
+    },
+    "items": [
+      {
+        "lineId": "mj4jiumi9s855e",
+        "id": 1,
+        "name": "Cheeseburger",
+        "price": 6.5,
+        "qty": 1,
+        "addons": []
+      }
+    ],
+    "subtotal": 6.5,
+    "taxRate": 8,
+    "tax": 0.52,
+    "total": 7.02,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4jjdyq6xi9",
+    "createdAt": "2025-12-13T16:59:16.466Z",
+    "customer": {
+      "id": "cmj3vini2",
+      "name": "Alejandro",
+      "phone": "8785705692",
+      "city": "Round Rock",
+      "points": 0,
+      "rewardAvailable": false
+    },
+    "items": [
+      {
+        "lineId": "mj4jj7dmp1q937",
+        "id": 5,
+        "name": "Coffee (Reward)",
+        "price": 0,
+        "qty": 1,
+        "addons": [],
+        "isReward": true
+      }
+    ],
+    "subtotal": 0,
+    "taxRate": 8,
+    "tax": 0,
+    "total": 0,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4l2jytktob",
+    "createdAt": "2025-12-13T17:42:10.325Z",
+    "customer": {
+      "id": "cmj3vini2",
+      "name": "Alejandro",
+      "phone": "8785705692",
+      "city": "Round Rock",
+      "points": 1,
+      "rewardAvailable": false
+    },
+    "items": [
+      {
+        "lineId": "mj4l2isljnc7su",
+        "id": 5,
+        "name": "Coffee",
+        "price": 2,
+        "qty": 1,
+        "addons": []
+      }
+    ],
+    "subtotal": 2,
+    "taxRate": 8,
+    "tax": 0.16,
+    "total": 2.16,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4l2rglfc2o",
+    "createdAt": "2025-12-13T17:42:20.037Z",
+    "customer": {
+      "id": "cmj3vini2",
+      "name": "Alejandro",
+      "phone": "8785705692",
+      "city": "Round Rock",
+      "points": 2,
+      "rewardAvailable": false
+    },
+    "items": [
+      {
+        "lineId": "mj4l2pglvjtget",
+        "id": 5,
+        "name": "Coffee",
+        "price": 2,
+        "qty": 1,
+        "addons": []
+      }
+    ],
+    "subtotal": 2,
+    "taxRate": 8,
+    "tax": 0.16,
+    "total": 2.16,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4mxib67fiu",
+    "createdAt": "2025-12-13T18:34:14.130Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj4mx91edh8gxu",
+        "id": 3,
+        "name": "Fries",
+        "price": 2.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 104,
+            "name": "Large Size",
+            "price": 0.99
+          }
+        ]
+      },
+      {
+        "lineId": "mj4mxh4yze1o1d",
+        "id": 2,
+        "name": "Veggie Burger",
+        "price": 6,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 103,
+            "name": "Avocado",
+            "price": 1.5
+          }
+        ]
+      }
+    ],
+    "subtotal": 10.99,
+    "taxRate": 8,
+    "tax": 0.8792,
+    "total": 11.8692,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4nw8cojxes",
+    "createdAt": "2025-12-13T19:01:14.184Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj4nw7ip0256gl",
+        "id": 3,
+        "name": "Fries",
+        "price": 2.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 104,
+            "name": "Large Size",
+            "price": 0.99
+          }
+        ]
+      }
+    ],
+    "subtotal": 3.49,
+    "taxRate": 8,
+    "tax": 0.2792,
+    "total": 3.7692,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4nx6iam6rn",
+    "createdAt": "2025-12-13T19:01:58.450Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj4nx1ptqy8poj",
+        "id": 1,
+        "name": "Cheeseburger",
+        "price": 6.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 102,
+            "name": "Bacon",
+            "price": 1.25
+          },
+          {
+            "id": 101,
+            "name": "Extra Cheese",
+            "price": 0.75
+          }
+        ]
+      }
+    ],
+    "subtotal": 8.5,
+    "taxRate": 8,
+    "tax": 0.68,
+    "total": 9.18,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4o3sdr37fw",
+    "createdAt": "2025-12-13T19:07:06.735Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj4o3rj4ggaxlc",
+        "id": 1,
+        "name": "Cheeseburger",
+        "price": 6.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 101,
+            "name": "Extra Cheese",
+            "price": 0.75
+          }
+        ]
+      }
+    ],
+    "subtotal": 7.25,
+    "taxRate": 8,
+    "tax": 0.58,
+    "total": 7.83,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4o57qobfm8",
+    "createdAt": "2025-12-13T19:08:13.296Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj4o56vtr9ib7o",
+        "id": 5,
+        "name": "Coffee",
+        "price": 2,
+        "qty": 1,
+        "addons": []
+      }
+    ],
+    "subtotal": 2,
+    "taxRate": 8,
+    "tax": 0.16,
+    "total": 2.16,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4olphlnvtj",
+    "createdAt": "2025-12-13T19:21:02.793Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj4olo55u80q3m",
+        "id": 3,
+        "name": "Fries",
+        "price": 2.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 105,
+            "name": "Ketchup Packet",
+            "price": 0
+          },
+          {
+            "id": 104,
+            "name": "Large Size",
+            "price": 0.99
+          }
+        ]
+      }
+    ],
+    "subtotal": 3.49,
+    "taxRate": 8,
+    "tax": 0.2792,
+    "total": 3.7692,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4oorzw9qml",
+    "createdAt": "2025-12-13T19:23:26.012Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj4oora5qhpw8z",
+        "id": 3,
+        "name": "Fries",
+        "price": 2.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 104,
+            "name": "Large Size",
+            "price": 0.99
+          },
+          {
+            "id": 105,
+            "name": "Ketchup Packet",
+            "price": 0
+          }
+        ]
+      }
+    ],
+    "subtotal": 3.49,
+    "taxRate": 8,
+    "tax": 0.2792,
+    "total": 3.7692,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4oszxzsc7i",
+    "createdAt": "2025-12-13T19:26:42.935Z",
+    "customer": {
+      "id": "cmj4mtyql",
+      "name": "Hector Ivan",
+      "phone": "5708674551",
+      "city": "Hazleton",
+      "points": 3
+    },
+    "items": [
+      {
+        "lineId": "mj4osydkn4li6l",
+        "id": 3,
+        "name": "Fries",
+        "price": 2.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 104,
+            "name": "Large Size",
+            "price": 0.99
+          }
+        ]
+      }
+    ],
+    "subtotal": 3.49,
+    "taxRate": 8,
+    "tax": 0.2792,
+    "total": 3.7692,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4owwezzdgg",
+    "createdAt": "2025-12-13T19:29:44.987Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj4owuzwsvw4bq",
+        "id": 5,
+        "name": "Coffee",
+        "price": 2,
+        "qty": 1,
+        "addons": []
+      }
+    ],
+    "subtotal": 2,
+    "taxRate": 8,
+    "tax": 0.16,
+    "total": 2.16,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4q5kwpcxnv",
+    "createdAt": "2025-12-13T20:04:29.593Z",
+    "customer": {
+      "id": "cmj4q4cv5",
+      "name": "Alex",
+      "phone": "345-675-4321",
+      "city": "Kyle"
+    },
+    "items": [
+      {
+        "lineId": "mj4q4g2v0edceo",
+        "id": 3,
+        "name": "Fries",
+        "price": 2.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 104,
+            "name": "Large Size",
+            "price": 0.99
+          },
+          {
+            "id": 105,
+            "name": "Ketchup Packet",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "lineId": "mj4q4ka0xgaxhd",
+        "id": 4,
+        "name": "Soft Drink",
+        "price": 1.75,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 104,
+            "name": "Large Size",
+            "price": 0.99
+          }
+        ]
+      }
+    ],
+    "subtotal": 6.23,
+    "taxRate": 6.25,
+    "tax": 0.389375,
+    "total": 6.619375000000001,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4qd8lcz86c",
+    "createdAt": "2025-12-13T20:10:26.880Z",
+    "customer": {
+      "id": "cmj3vini2",
+      "name": "Alejandro",
+      "phone": "8785705692",
+      "city": "Round Rock"
+    },
+    "items": [
+      {
+        "lineId": "mj4qd0xz2sdacu",
+        "id": 5,
+        "name": "Coffee",
+        "price": 2,
+        "qty": 1,
+        "addons": []
+      },
+      {
+        "lineId": "mj4qd4rjmfq2n8",
+        "id": 4,
+        "name": "Soft Drink",
+        "price": 1.75,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 104,
+            "name": "Large Size",
+            "price": 0.99
+          }
+        ]
+      }
+    ],
+    "subtotal": 4.74,
+    "taxRate": 6.25,
+    "tax": 0.29625,
+    "total": 5.03625,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4qk30ebtys",
+    "createdAt": "2025-12-13T20:15:46.238Z",
+    "customer": {
+      "id": "cmj3v673q",
+      "name": "jkhkjkjgjk",
+      "phone": "570 865 689 0",
+      "city": "klhjhjk"
+    },
+    "items": [
+      {
+        "lineId": "mj4qj6hgfr31gv",
+        "id": 3,
+        "name": "Fries",
+        "price": 2.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 104,
+            "name": "Large Size",
+            "price": 0.99
+          },
+          {
+            "id": 105,
+            "name": "Ketchup Packet",
+            "price": 0
+          }
+        ]
+      }
+    ],
+    "subtotal": 3.49,
+    "taxRate": 6.25,
+    "tax": 0.218125,
+    "total": 3.7081250000000003,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4qpoluyq68",
+    "createdAt": "2025-12-13T20:20:07.506Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj4qpnqy4jx200",
+        "id": 3,
+        "name": "Fries",
+        "price": 2.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 104,
+            "name": "Large Size",
+            "price": 0.99
+          },
+          {
+            "id": 105,
+            "name": "Ketchup Packet",
+            "price": 0
+          }
+        ]
+      }
+    ],
+    "subtotal": 3.49,
+    "taxRate": 6.25,
+    "tax": 0.218125,
+    "total": 3.7081250000000003,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4ts91jzj85",
+    "createdAt": "2025-12-13T21:46:06.151Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj4ts7jsaxvnm4",
+        "id": 1,
+        "name": "Cheeseburger",
+        "price": 6.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 101,
+            "name": "Extra Cheese",
+            "price": 0.75
+          }
+        ]
+      }
+    ],
+    "subtotal": 7.25,
+    "taxRate": 6.25,
+    "tax": 0.453125,
+    "total": 7.703125,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4u9ncits95",
+    "createdAt": "2025-12-13T21:59:37.842Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj4u9e9uksfx6m",
+        "id": 3,
+        "name": "Fries",
+        "price": 2.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 104,
+            "name": "Large Size",
+            "price": 0.99
+          },
+          {
+            "id": 105,
+            "name": "Ketchup Packet",
+            "price": 0
+          }
+        ]
+      },
+      {
+        "lineId": "mj4u9m4a36yrso",
+        "id": 4,
+        "name": "Soft Drink",
+        "price": 1.75,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 104,
+            "name": "Large Size",
+            "price": 0.99
+          }
+        ]
+      }
+    ],
+    "subtotal": 6.23,
+    "taxRate": 6.25,
+    "tax": 0.389375,
+    "total": 6.619375000000001,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4ubpv0n7bg",
+    "createdAt": "2025-12-13T22:01:14.412Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj4ubospqyph4g",
+        "id": 5,
+        "name": "Coffee",
+        "price": 2,
+        "qty": 1,
+        "addons": []
+      }
+    ],
+    "subtotal": 2,
+    "taxRate": 6.25,
+    "tax": 0.125,
+    "total": 2.125,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4xb1kzso7i",
+    "createdAt": "2025-12-13T23:24:41.795Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj4xaw03vbbdoj",
+        "id": 3,
+        "name": "Fries",
+        "price": 2.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 104,
+            "name": "Large Size",
+            "price": 0.99
+          },
+          {
+            "id": 105,
+            "name": "Ketchup Packet",
+            "price": 0
+          }
+        ]
+      }
+    ],
+    "subtotal": 3.49,
+    "taxRate": 6.25,
+    "tax": 0.218125,
+    "total": 3.7081250000000003,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4xy7tafi7r",
+    "createdAt": "2025-12-13T23:42:42.958Z",
+    "customer": {
+      "id": "cmj4mtyql",
+      "name": "Hector Ivan",
+      "phone": "5708674551",
+      "city": "Hazleton",
+      "points": 4
+    },
+    "items": [
+      {
+        "lineId": "mj4xy6lr82e2sn",
+        "id": 3,
+        "name": "Fries",
+        "price": 2.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 105,
+            "name": "Ketchup Packet",
+            "price": 0
+          }
+        ]
+      }
+    ],
+    "subtotal": 2.5,
+    "taxRate": 6.25,
+    "tax": 0.15625,
+    "total": 2.65625,
+    "paymentType": "credit",
+    "paymentFeePercent": 2.6,
+    "paymentFee": 0.07,
+    "totalWithFee": 2.73,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj4z7egf89vk",
+    "createdAt": "2025-12-14T00:17:51.087Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj4z71uvnmtgpc",
+        "id": 3,
+        "name": "Fries",
+        "price": 2.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 104,
+            "name": "Large Size",
+            "price": 0.99
+          },
+          {
+            "id": 105,
+            "name": "Ketchup Packet",
+            "price": 0
+          }
+        ]
+      }
+    ],
+    "subtotal": 3.49,
+    "taxRate": 6.25,
+    "tax": 0.218125,
+    "total": 3.7081250000000003,
+    "paymentType": "cash",
+    "paymentFeePercent": 0,
+    "paymentFee": 0,
+    "totalWithFee": 3.71,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  }
+]
