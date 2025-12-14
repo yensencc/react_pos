@@ -1,9 +1,9 @@
 {
-  "ordersView": true,
+  "ordersView": false,
   "sendToKitchen": true,
   "serverSave": true,
   "clientSearch": true,
   "importExport": false,
-  "rewards": true,
-  "manageProducts": true
+  "rewards": false,
+  "manageProducts": false
 }
