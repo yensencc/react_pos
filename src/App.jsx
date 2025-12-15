@@ -34,6 +34,7 @@ export default function App() {
   const [cart, setCart] = useState([])
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [selectedAddons, setSelectedAddons] = useState([])
+  const [selectedQty, setSelectedQty] = useState(1)
   const [selectedCategory, setSelectedCategory] = useState(null)
   // Settings are accessible only via the hidden route `#/settings`
   const [route, setRoute] = useState(window.location.hash.slice(1) || '/')
@@ -177,11 +178,13 @@ export default function App() {
     console.debug('selectProductForAddons', product && product.id)
     setSelectedProduct(product)
     setSelectedAddons([])
+    setSelectedQty(1)
   }
 
   function cancelAddonSelection() {
     setSelectedProduct(null)
     setSelectedAddons([])
+    setSelectedQty(1)
   }
 
   function toggleAddon(id) {
@@ -195,10 +198,11 @@ export default function App() {
       // try merge on id + addon ids
       const keyFor = arr => JSON.stringify((arr||[]).map(a=>a.id).sort())
       const match = curr.find(i => i.id === selectedProduct.id && keyFor(i.addons) === keyFor(chosenAddons))
+      const amount = Number(selectedQty) || 1
       if (match) {
-        return curr.map(i => i === match ? { ...i, qty: i.qty + 1 } : i)
+        return curr.map(i => i === match ? { ...i, qty: i.qty + amount } : i)
       }
-      return [...curr, { lineId: genLineId(), id: selectedProduct.id, name: selectedProduct.name, price: selectedProduct.price, qty: 1, addons: chosenAddons }]
+      return [...curr, { lineId: genLineId(), id: selectedProduct.id, name: selectedProduct.name, price: selectedProduct.price, qty: amount, addons: chosenAddons }]
     })
     setSelectedProduct(null)
     setSelectedAddons([])
@@ -329,8 +333,16 @@ export default function App() {
                 return <AddonsList addons={suggested} selected={selectedAddons} onToggle={toggleAddon} />
               })()
             }
-            <div style={{marginTop:8,display:'flex',gap:8}}>
-              <button type="button" className="clear" onClick={doneAddonSelection} disabled={false}>Done</button>
+            <div style={{marginTop:8,display:'flex',flexDirection:'column',gap:8}}>
+              <div style={{display:'flex',alignItems:'center',gap:8}}>
+                <label style={{fontWeight:600}}>Qty</label>
+                <button type="button" className="product-btn" onClick={() => setSelectedQty(q => Math.max(1, (q || 1) - 1))}>-</button>
+                <div style={{minWidth:36,textAlign:'center',fontWeight:700}}>{selectedQty || 1}</div>
+                <button type="button" className="product-btn" onClick={() => setSelectedQty(q => (q || 1) + 1)}>+</button>
+              </div>
+              <div style={{display:'flex',gap:8}}>
+                <button type="button" className="clear" onClick={doneAddonSelection} disabled={false}>Done</button>
+              </div>
             </div>
           </div>
 

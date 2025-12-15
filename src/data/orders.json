@@ -1593,5 +1593,51 @@
     "status": "sent",
     "canceled": false,
     "cancelReason": ""
+  },
+  {
+    "id": "omj6et0q4pli8",
+    "createdAt": "2025-12-15T00:22:20.140Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj6erk8kk23mdl",
+        "id": 1,
+        "name": "Taco",
+        "price": 4,
+        "qty": 2,
+        "addons": [
+          {
+            "id": 101,
+            "name": "Pastor",
+            "price": 0.75
+          }
+        ]
+      },
+      {
+        "lineId": "mj6es96k48emxh",
+        "id": 1,
+        "name": "Taco",
+        "price": 4,
+        "qty": 3,
+        "addons": [
+          {
+            "id": 105,
+            "name": "Barbacoa",
+            "price": 0
+          }
+        ]
+      }
+    ],
+    "subtotal": 21.5,
+    "taxRate": 6.25,
+    "tax": 1.34375,
+    "total": 22.84375,
+    "paymentType": "credit",
+    "paymentFeePercent": 2.6,
+    "paymentFee": 0.59,
+    "totalWithFee": 23.43,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
   }
 ]
