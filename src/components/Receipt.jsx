@@ -57,7 +57,7 @@ export function buildReceiptHtml(items, settings = {}, customer = null, products
   }
 }
 
-export default function Receipt({ items, onRemove, onClear, settings = {}, customer = null, onSend, products = [], onApplyReward, features = {} }) {
+export default function Receipt({ items, onRemove, onClear, settings = {}, customer = null, onSend, onPlaceOrder, onOrderPlaced, products = [], onApplyReward, features = {} }) {
   const taxRate = settings.taxRate != null ? settings.taxRate : 8
   const subtotal = items.reduce((s, it) => {
     const addonsTotal = (it.addons || []).reduce((a, x) => a + (x.price || 0), 0)
@@ -67,6 +67,11 @@ export default function Receipt({ items, onRemove, onClear, settings = {}, custo
   const total = subtotal + tax
 
   const [paymentType, setPaymentType] = useState('cash')
+  const [showCardPay, setShowCardPay] = useState(false)
+  const [CardPaymentComponent, setCardPaymentComponent] = useState(null)
+  const [cardLoading, setCardLoading] = useState(false)
+  const [cardError, setCardError] = useState(null)
+  const publishableKey = (settings && settings.stripePublishableKey) || ''
 
   // Cash payment modal state
   const [showCash, setShowCash] = useState(false)
@@ -180,6 +185,30 @@ export default function Receipt({ items, onRemove, onClear, settings = {}, custo
           <option value="debit">Card (Debit)</option>
           <option value="credit">Card (Credit)</option>
         </select>
+        {(paymentType === 'credit' || paymentType === 'debit') && (
+          <>
+            <button type="button" className="product-btn" style={{marginLeft:8}} disabled={!publishableKey || !String(publishableKey).trim()} onClick={async () => {
+              setCardError(null)
+              const pub = (settings && settings.stripePublishableKey) || ''
+              if (!pub || !String(pub).trim()) {
+                setCardError('Stripe publishable key not configured. Set it in Settings to accept card payments.')
+                setShowCardPay(true)
+                return
+              }
+              if (!CardPaymentComponent) {
+                setCardLoading(true)
+                try {
+                  const mod = await import('./CardPayment')
+                  setCardPaymentComponent(() => mod && mod.default ? mod.default : null)
+                } catch (err) {
+                  setCardError(err && err.message ? err.message : String(err))
+                } finally { setCardLoading(false) }
+              }
+              setShowCardPay(true)
+            }}>{cardLoading ? 'Loading...' : 'Pay with Card'}</button>
+            {(!publishableKey || !String(publishableKey).trim()) && (<div style={{color:'#a00',marginTop:6,fontSize:13}}>Publishable key missing — set it in <a href="#/settings" style={{color:'#0b74de',textDecoration:'underline'}}>Settings</a> to enable card payments.</div>)}
+          </>
+        )}
       </div>
 
       {/* Separated controls section below the receipt */}
@@ -250,6 +279,81 @@ export default function Receipt({ items, onRemove, onClear, settings = {}, custo
           </div>
         </div>
       )}
+
+      {showRewardModal && (
+        <div style={{position:'fixed',left:0,top:0,right:0,bottom:0,background:'rgba(0,0,0,0.4)',display:'flex',alignItems:'center',justifyContent:'center',zIndex:9999}}>
+          <div style={{background:'#fff',padding:16,borderRadius:8,width:520,maxWidth:'95%'}}>
+            <h3>Redeem Reward</h3>
+            <div style={{marginBottom:8}}>Choose a free item to redeem from eligible products.</div>
+            <div style={{maxHeight:300,overflow:'auto',borderTop:'1px solid #eee',paddingTop:8}}>
+              {products.filter(p => p.rewardEligible).length === 0 ? (
+                <div style={{color:'#666'}}>No reward-eligible products are configured.</div>
+              ) : (
+                products.filter(p => p.rewardEligible).map(p => (
+                  <div key={p.id} style={{display:'flex',justifyContent:'space-between',alignItems:'center',padding:'8px 4px',borderBottom:'1px solid #f6f6f6'}}>
+                    <div><strong>{p.name}</strong><div style={{fontSize:13,color:'#666'}}>{currency(p.price)}</div></div>
+                    <div>
+                      <button className="product-btn" onClick={() => { onApplyReward && onApplyReward(p.id); setShowRewardModal(false) }}>Redeem</button>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+            <div style={{display:'flex',justifyContent:'flex-end',gap:8,marginTop:12}}>
+              <button className="product-btn" onClick={() => setShowRewardModal(false)}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showCardPay && (
+        <div style={{position:'fixed',left:0,top:0,right:0,bottom:0,background:'rgba(0,0,0,0.4)',display:'flex',alignItems:'center',justifyContent:'center',zIndex:10000}}>
+          <div style={{background:'#fff',padding:16,borderRadius:8,width:540,maxWidth:'95%'}}>
+            <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+              <h3>Card Payment</h3>
+              <div>
+                <button className="product-btn" onClick={() => setShowCardPay(false)}>Close</button>
+              </div>
+            </div>
+            {cardError && (<div style={{color:'#a00',marginBottom:8}}>{cardError}</div>)}
+            {CardPaymentComponent ? (
+              (() => {
+                const feeCfg = (settings && settings.paymentFees) || {}
+                let feePercent = 0
+                if (paymentType === 'credit') feePercent = Number(feeCfg.creditPercent || 0)
+                else if (paymentType === 'debit') feePercent = Number(feeCfg.debitPercent || 0)
+                const paymentFee = Math.round((total * (feePercent/100)) * 100) / 100
+                const grandTotal = Math.round((total + paymentFee) * 100) / 100
+                const amountCents = Math.round(grandTotal * 100)
+                return <CardPaymentComponent publishableKey={(settings && settings.stripePublishableKey) || ''} amountCents={amountCents} currentCustomerId={(customer && customer.id) || null} onCancel={() => setShowCardPay(false)} onSuccess={async (paymentIntent) => {
+                  try {
+                    setShowCardPay(false)
+                    let res = null
+                    if (onPlaceOrder) {
+                      res = await onPlaceOrder({ paymentType, paymentReference: paymentIntent && paymentIntent.id, skipPostPlacement: true })
+                    }
+                    // If order placed successfully, trigger send-to-kitchen actions (print, customer allocation)
+                    if (res && res.ok && res.order) {
+                      if (typeof onOrderPlaced === 'function') await onOrderPlaced(res.order, { paymentType })
+                      alert('Payment succeeded and order placed')
+                    } else if (res && !res.ok) {
+                      alert('Payment succeeded but saving the order failed')
+                    } else {
+                      alert('Payment succeeded')
+                    }
+                  } catch (err) {
+                    console.error('post-payment save failed', err)
+                    alert('Payment succeeded but failed to save order: ' + (err && err.message ? err.message : String(err)))
+                  }
+                }} />
+              })()
+            ) : (
+              <div>Loading payment UI...</div>
+            )}
+          </div>
+        </div>
+      )}
+
 
       {showRewardModal && (
         <div style={{position:'fixed',left:0,top:0,right:0,bottom:0,background:'rgba(0,0,0,0.4)',display:'flex',alignItems:'center',justifyContent:'center',zIndex:9999}}>

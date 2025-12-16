@@ -1639,5 +1639,272 @@
     "status": "sent",
     "canceled": false,
     "cancelReason": ""
+  },
+  {
+    "id": "omj6eztstx70b",
+    "createdAt": "2025-12-15T00:27:37.757Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj6ez3khd8wslz",
+        "id": 1,
+        "name": "Taco",
+        "price": 4,
+        "qty": 2,
+        "addons": [
+          {
+            "id": 103,
+            "name": "Fajita de Beef",
+            "price": 1.5
+          }
+        ]
+      },
+      {
+        "lineId": "mj6ez978db7zlx",
+        "id": 1,
+        "name": "Taco",
+        "price": 4,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 101,
+            "name": "Pastor",
+            "price": 0.75
+          }
+        ]
+      }
+    ],
+    "subtotal": 15.75,
+    "taxRate": 6.25,
+    "tax": 0.984375,
+    "total": 16.734375,
+    "paymentType": "credit",
+    "paymentFeePercent": 2.6,
+    "paymentFee": 0.44,
+    "totalWithFee": 17.17,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj8wi959p9v5",
+    "createdAt": "2025-12-16T18:13:23.277Z",
+    "customer": {
+      "id": "cmj3vini2",
+      "name": "Alejandro",
+      "phone": "8785705692",
+      "city": "Round Rock"
+    },
+    "items": [
+      {
+        "lineId": "mj8wi5lyswzz0r",
+        "id": 1,
+        "name": "Cheeseburger",
+        "price": 6.5,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 101,
+            "name": "Extra Cheese",
+            "price": 0.75
+          },
+          {
+            "id": 102,
+            "name": "Bacon",
+            "price": 1.25
+          }
+        ]
+      }
+    ],
+    "subtotal": 8.5,
+    "taxRate": 6.25,
+    "tax": 0.53125,
+    "total": 9.03125,
+    "paymentType": "cash",
+    "paymentFeePercent": 0,
+    "paymentFee": 0,
+    "totalWithFee": 9.03,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj8zhwwzhks5",
+    "createdAt": "2025-12-16T19:37:06.275Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj8zgu2rvac85s",
+        "id": 1,
+        "name": "Taco",
+        "price": 4,
+        "qty": 2,
+        "addons": [
+          {
+            "id": 103,
+            "name": "Fajita de Beef",
+            "price": 1.5
+          }
+        ]
+      },
+      {
+        "lineId": "mj8zgvmrdcb4iv",
+        "id": 1,
+        "name": "Taco",
+        "price": 4,
+        "qty": 2,
+        "addons": [
+          {
+            "id": 102,
+            "name": "Cecina",
+            "price": 1.25
+          }
+        ]
+      }
+    ],
+    "subtotal": 21.5,
+    "taxRate": 6.25,
+    "tax": 1.34375,
+    "total": 22.84375,
+    "paymentType": "debit",
+    "paymentReference": "pi_3Sf43RI1sKho1Q5f0c91NaS2",
+    "paymentFeePercent": 0,
+    "paymentFee": 0,
+    "totalWithFee": 22.84,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj8zk7h196tp",
+    "createdAt": "2025-12-16T19:38:53.269Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj8zjpomd63by8",
+        "id": 1,
+        "name": "Taco",
+        "price": 4,
+        "qty": 3,
+        "addons": [
+          {
+            "id": 103,
+            "name": "Fajita de Beef",
+            "price": 1.5
+          }
+        ]
+      }
+    ],
+    "subtotal": 16.5,
+    "taxRate": 6.25,
+    "tax": 1.03125,
+    "total": 17.53125,
+    "paymentType": "debit",
+    "paymentReference": null,
+    "paymentFeePercent": 0,
+    "paymentFee": 0,
+    "totalWithFee": 17.53,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj8zv87l3m7o",
+    "createdAt": "2025-12-16T19:47:27.441Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj8zuegngmep3k",
+        "id": 1,
+        "name": "Taco",
+        "price": 4,
+        "qty": 3,
+        "addons": [
+          {
+            "id": 102,
+            "name": "Cecina",
+            "price": 1.25
+          }
+        ]
+      }
+    ],
+    "subtotal": 15.75,
+    "taxRate": 6.25,
+    "tax": 0.984375,
+    "total": 16.734375,
+    "paymentType": "debit",
+    "paymentReference": "pi_3Sf4DRI1sKho1Q5f0R50Yj3M",
+    "paymentFeePercent": 0,
+    "paymentFee": 0,
+    "totalWithFee": 16.73,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj8zxroaozyw",
+    "createdAt": "2025-12-16T19:49:25.978Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj8zx9uh224yub",
+        "id": 1,
+        "name": "Taco",
+        "price": 4,
+        "qty": 3,
+        "addons": [
+          {
+            "id": 101,
+            "name": "Pastor",
+            "price": 0.75
+          }
+        ]
+      }
+    ],
+    "subtotal": 14.25,
+    "taxRate": 6.25,
+    "tax": 0.890625,
+    "total": 15.140625,
+    "paymentType": "debit",
+    "paymentReference": "pi_3Sf4FMI1sKho1Q5f0L91SXTc",
+    "paymentFeePercent": 0,
+    "paymentFee": 0,
+    "totalWithFee": 15.14,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
+  },
+  {
+    "id": "omj9077s6rtlm",
+    "createdAt": "2025-12-16T19:56:46.758Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mj906ndnb99kvc",
+        "id": 1,
+        "name": "Taco",
+        "price": 4,
+        "qty": 2,
+        "addons": [
+          {
+            "id": 101,
+            "name": "Pastor",
+            "price": 0.75
+          }
+        ]
+      }
+    ],
+    "subtotal": 9.5,
+    "taxRate": 6.25,
+    "tax": 0.59375,
+    "total": 10.09375,
+    "paymentType": "debit",
+    "paymentReference": "pi_3Sf4MTI1sKho1Q5f0MmfALVd",
+    "paymentFeePercent": 0,
+    "paymentFee": 0,
+    "totalWithFee": 10.09,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
   }
 ]

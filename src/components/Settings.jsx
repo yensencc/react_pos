@@ -7,7 +7,12 @@ export default function Settings({ settings, features = {}, onSave, onCancel }) 
     phone: settings.phone || '',
     taxRate: settings.taxRate != null ? settings.taxRate : 8,
     footerNote: settings.footerNote || '',
-    logo: settings.logo || ''
+    logo: settings.logo || '',
+    // optional stripe publishable key for other web flows (Elements). Terminal uses server connection tokens.
+    stripePublishableKey: settings.stripePublishableKey || '',
+    // optional stripe secret key to allow creating PaymentIntents from the local server.
+    // WARNING: this will be persisted to src/data/settings.json. For production prefer setting STRIPE_SECRET_KEY env var.
+    stripeSecretKey: settings.stripeSecretKey || ''
   })
 
   const buildFlags = (f = {}) => ({
@@ -21,12 +26,42 @@ export default function Settings({ settings, features = {}, onSave, onCancel }) 
   })
 
   const [flags, setFlags] = useState(buildFlags(features))
+  const [showTerminal, setShowTerminal] = useState(false)
+  const [StripeComponent, setStripeComponent] = useState(null)
+  const [stripeLoadError, setStripeLoadError] = useState(null)
+  const [stripeLoading, setStripeLoading] = useState(false)
+  // local UI state to indicate a secret was saved (we don't echo it back from server for safety)
+  const [secretSaved, setSecretSaved] = useState(false)
 
   useEffect(() => {
     setFlags(buildFlags(features))
   }, [features])
 
-  function update(k, v) { setForm(f => ({ ...f, [k]: v })) }
+  useEffect(() => {
+    let mounted = true
+    async function lazyLoad() {
+      if (!showTerminal || StripeComponent || stripeLoading) return
+      setStripeLoading(true)
+      try {
+        const mod = await import('./StripeTerminal')
+        if (!mounted) return
+        setStripeComponent(() => mod && mod.default ? mod.default : null)
+      } catch (err) {
+        if (!mounted) return
+        setStripeLoadError(err && err.message ? err.message : String(err))
+      } finally {
+        if (!mounted) return
+        setStripeLoading(false)
+      }
+    }
+    lazyLoad()
+    return () => { mounted = false }
+  }, [showTerminal, StripeComponent, stripeLoading])
+
+  function update(k, v) { 
+    setForm(f => ({ ...f, [k]: v }))
+    if (k === 'stripeSecretKey') setSecretSaved(false)
+  }
 
   function save() {
     const parsed = { ...form, taxRate: parseFloat(form.taxRate) || 0 }
@@ -39,6 +74,11 @@ export default function Settings({ settings, features = {}, onSave, onCancel }) 
     }
     const mergedFeatures = { ...(features || {}), ...flags }
     if (onSave) onSave({ settings: parsed, features: mergedFeatures })
+    // For security, clear the secret field from the local form and show a saved indicator
+    if (parsed.stripeSecretKey) {
+      setForm(f => ({ ...f, stripeSecretKey: '' }))
+      setSecretSaved(true)
+    }
   }
 
   function toggleFlag(k) { setFlags(f => ({ ...f, [k]: !f[k] })) }
@@ -58,6 +98,37 @@ export default function Settings({ settings, features = {}, onSave, onCancel }) 
       <input value={form.taxRate} onChange={e=>update('taxRate', e.target.value)} />
       <label>Footer Note</label>
       <input value={form.footerNote} onChange={e=>update('footerNote', e.target.value)} />
+
+      <label>Stripe Publishable Key (pk_...)</label>
+      <input placeholder="pk_test_..." value={form.stripePublishableKey} onChange={e=>update('stripePublishableKey', e.target.value)} />
+
+      <label>Stripe Secret Key (sk_...) — stored in settings.json</label>
+      <div style={{display:'flex',alignItems:'center',gap:8}}>
+        <input type="password" placeholder="sk_test_..." value={form.stripeSecretKey} onChange={e=>update('stripeSecretKey', e.target.value)} />
+        {secretSaved && <div style={{color:'#0a8',fontSize:13}}>Saved</div>}
+      </div>
+      <div style={{marginTop:6,fontSize:12,color:'#666'}}>Storing secret keys here is convenient for local testing; for production prefer setting <code>STRIPE_SECRET_KEY</code> as an environment variable. The secret is not echoed back by the server for safety.</div>
+
+      <div style={{marginTop:8,display:'flex',gap:8}}>
+        <button type="button" className="product-btn" onClick={()=>setShowTerminal(s=>!s)}>{showTerminal ? 'Hide Terminal' : 'Open Terminal'}</button>
+        <div style={{alignSelf:'center',fontSize:12,color:'#666'}}>Use publishable key to enable client-side web flows; Terminal uses server connection tokens.</div>
+      </div>
+
+      {showTerminal && (
+        <div style={{marginTop:12}}>
+          {stripeLoading && (<div>Loading Terminal UI...</div>)}
+          {stripeLoadError && (
+            <div style={{padding:8,background:'#fff4f4',border:'1px solid #f5c2c2',borderRadius:6}}>
+              <div style={{fontWeight:700,color:'#a00'}}>Failed to load Stripe Terminal</div>
+              <div style={{marginTop:6}}>Error: {stripeLoadError}</div>
+              <div style={{marginTop:8}}>If you see a version-related error, ensure `@stripe/terminal-js` is installed (see README).</div>
+            </div>
+          )}
+          {(!stripeLoading && !stripeLoadError && StripeComponent) && (
+            <div><StripeComponent /></div>
+          )}
+        </div>
+      )}
 
       <h4 style={{marginTop:12}}>Feature Toggles</h4>
       <div style={{display:'grid',gap:6}}>

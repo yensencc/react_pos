@@ -2,10 +2,14 @@ const express = require('express')
 const fs = require('fs')
 const path = require('path')
 const cors = require('cors')
+const Stripe = require('stripe')
 
 const app = express()
 app.use(cors())
 app.use(express.json())
+
+// Initialize Stripe using STRIPE_SECRET_KEY env var. If not set, endpoints will return a clear error.
+const stripe = process.env.STRIPE_SECRET_KEY ? Stripe(process.env.STRIPE_SECRET_KEY) : null
 
 const ORDERS_PATH = path.join(__dirname, '..', 'src', 'data', 'orders.json')
 const FEATURES_PATH = path.join(__dirname, '..', 'src', 'data', 'features.json')
@@ -118,7 +122,10 @@ app.post('/features', (req, res) => {
 app.get('/settings', (req, res) => {
   try {
     const settings = readSettings()
-    return res.json({ ok: true, settings })
+    // Never echo back the secret key over the endpoints; return a safe copy without stripeSecretKey
+    const safe = { ...settings }
+    if (safe.hasOwnProperty('stripeSecretKey')) safe.stripeSecretKey = ''
+    return res.json({ ok: true, settings: safe })
   } catch (err) {
     console.error('read settings failed', err)
     return res.status(500).json({ ok: false, error: err.message })
@@ -471,6 +478,132 @@ app.delete('/category/:id', (req, res) => {
     console.error('delete category failed', err)
     return res.status(500).json({ ok: false, error: err.message })
   }
+})
+
+// --- Stripe Terminal & Payments endpoints ---
+// NOTE: prefers STRIPE_SECRET_KEY in environment; falls back to settings.json.stripeSecretKey when present.
+
+function getStripeInstance() {
+  const key = process.env.STRIPE_SECRET_KEY || (readSettings().stripeSecretKey || '').toString().trim()
+  if (!key) return null
+  try { return Stripe(key) } catch (err) { console.error('init Stripe failed', err); return null }
+}
+
+app.post('/stripe/connection_token', async (req, res) => {
+  try {
+    const stripeClient = getStripeInstance()
+    if (!stripeClient) return res.status(500).json({ ok: false, error: 'Stripe not configured (set STRIPE_SECRET_KEY or stripeSecretKey in settings)' })
+    const token = await stripeClient.terminal.connectionTokens.create()
+    return res.json({ ok: true, secret: token.secret })
+  } catch (err) {
+    console.error('connection token failed', err)
+    return res.status(500).json({ ok: false, error: err.message })
+  }
+})
+
+app.post('/stripe/create_payment_intent', async (req, res) => {
+  try {
+    const stripeClient = getStripeInstance()
+    if (!stripeClient) return res.status(500).json({ ok: false, error: 'Stripe not configured (set STRIPE_SECRET_KEY or stripeSecretKey in settings)' })
+    const { amount, currency = 'usd', orderId } = req.body || {}
+    if (!amount || typeof amount !== 'number') return res.status(400).json({ ok: false, error: 'amount (number) required in cents' })
+    const paymentIntent = await stripeClient.paymentIntents.create({
+      amount,
+      currency,
+      payment_method_types: ['card_present'],
+      metadata: { orderId: orderId || '' }
+    })
+    return res.json({ ok: true, client_secret: paymentIntent.client_secret, id: paymentIntent.id })
+  } catch (err) {
+    console.error('create payment intent failed', err)
+    return res.status(500).json({ ok: false, error: err.message })
+  }
+})
+
+// Create a PaymentIntent for web card payments (Elements)
+app.post('/stripe/create_payment_intent_web', async (req, res) => {
+  try {
+    const stripeClient = getStripeInstance()
+    if (!stripeClient) return res.status(500).json({ ok: false, error: 'Stripe not configured (set STRIPE_SECRET_KEY or stripeSecretKey in settings)' })
+    const { amount, currency = 'usd', orderId } = req.body || {}
+    if (!amount || typeof amount !== 'number') return res.status(400).json({ ok: false, error: 'amount (number) required in cents' })
+    const paymentIntent = await stripeClient.paymentIntents.create({
+      amount,
+      currency,
+      payment_method_types: ['card'],
+      metadata: { orderId: orderId || '' }
+    })
+    return res.json({ ok: true, client_secret: paymentIntent.client_secret, id: paymentIntent.id })
+  } catch (err) {
+    console.error('create payment intent (web) failed', err)
+    return res.status(500).json({ ok: false, error: err.message })
+  }
+})
+
+app.post('/stripe/save_payment_method', async (req, res) => {
+  try {
+    const { payment_method, payment_intent, customerId } = req.body || {}
+    const stripeClient = getStripeInstance()
+    if (!stripeClient) return res.status(500).json({ ok: false, error: 'Stripe not configured (set STRIPE_SECRET_KEY or stripeSecretKey in settings)' })
+    let pm = payment_method
+    if (!pm && payment_intent) {
+      const pi = await stripeClient.paymentIntents.retrieve(payment_intent, { expand: ['payment_method'] })
+      if (pi && pi.payment_method) pm = (typeof pi.payment_method === 'string') ? pi.payment_method : pi.payment_method.id
+    }
+    if (!pm) return res.status(400).json({ ok: false, error: 'payment_method or payment_intent required' })
+
+    const customers = readCustomers()
+    const local = customerId ? customers.find(c => String(c.id) === String(customerId)) : null
+    let stripeCustomerId = local && local.stripeCustomerId
+    if (!stripeCustomerId) {
+      const created = await stripeClient.customers.create({ metadata: { localCustomerId: local && local.id ? local.id : '' }, name: local && local.name, phone: local && local.phone })
+      stripeCustomerId = created.id
+      if (local) {
+        local.stripeCustomerId = stripeCustomerId
+        writeCustomers(customers)
+      }
+    }
+
+    await stripeClient.paymentMethods.attach(pm, { customer: stripeCustomerId })
+    await stripeClient.customers.update(stripeCustomerId, { invoice_settings: { default_payment_method: pm } })
+    return res.json({ ok: true, payment_method: pm, stripeCustomerId })
+  } catch (err) {
+    console.error('save payment method failed', err)
+    return res.status(500).json({ ok: false, error: err.message })
+  }
+})
+
+app.post('/stripe/webhook', express.raw({ type: 'application/json' }), (req, res) => {
+  const sig = req.headers['stripe-signature']
+  let event
+  try {
+    if (process.env.STRIPE_WEBHOOK_SECRET && stripe) {
+      event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET)
+    } else {
+      // If no webhook secret provided, attempt to parse event without verification (useful for local dev)
+      event = JSON.parse(req.body.toString())
+    }
+  } catch (err) {
+    console.error('webhook verification failed', err.message)
+    return res.status(400).send(`Webhook Error: ${err.message}`)
+  }
+
+  // Basic event handling — expand as needed (e.g., update orders.json when payment succeeds)
+  switch (event.type) {
+    case 'payment_intent.succeeded':
+      console.log('PaymentIntent succeeded', event.data.object.id)
+      break
+    case 'payment_intent.payment_failed':
+      console.log('PaymentIntent failed', event.data.object.id)
+      break
+    case 'terminal.reader.action_failed':
+      console.log('Terminal reader action failed', event.data.object)
+      break
+    default:
+      console.log('Unhandled stripe event type', event.type)
+  }
+
+  res.json({ received: true })
 })
 
 const port = process.env.PORT || 4000

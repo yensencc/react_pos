@@ -208,38 +208,55 @@ export default function App() {
     setSelectedAddons([])
   }
 
-  function saveOrder(opts = {}) {
+  async function finalizeOrderActions(order, { paymentType } = {}) {
+    try {
+      if (order && order.customer && order.customer.id) grantOrderToCustomer(order.customer.id)
+      try { await openPreviewWithEmbeddedLogo(order.items || cart, settings, currentCustomer, products, paymentType) } catch (e) { console.debug('preview failed', e) }
+      setCart([])
+      setSelectedProduct(null)
+      setSelectedAddons([])
+      setSelectedCategory(null)
+      setClientSearch('')
+      setCurrentCustomer(null)
+      try { localStorage.removeItem('pos_currentCustomer') } catch (e) {}
+      setNewCustomerName('')
+      setNewCustomerCity('')
+      setNewCustomerPhone('')
+      setDuplicateCustomer(null)
+      alert((order && order.server) ? 'Order sent to kitchen (id: ' + (order && order.id) + ')' : 'Order saved locally (id: ' + (order && order.id) + ')')
+    } catch (err) {
+      console.error('finalizeOrderActions failed', err)
+    }
+  }
+
+  async function saveOrder(opts = {}) {
     if (!cart || cart.length === 0) {
       alert('No items to send')
-      return
+      return { ok: false }
     }
-    (async () => {
-      try {
-        const res = await placeOrder(cart, { settings, currentCustomer, products, paymentType: opts.paymentType })
-        if (res && res.ok) {
-          const order = res.order
-          if (order && order.customer && order.customer.id) grantOrderToCustomer(order.customer.id)
-          try { await openPreviewWithEmbeddedLogo(cart, settings, currentCustomer, products, opts.paymentType) } catch (e) { console.debug('preview failed', e) }
-          setCart([])
-          setSelectedProduct(null)
-          setSelectedAddons([])
-          setSelectedCategory(null)
-          setClientSearch('')
-          setCurrentCustomer(null)
-          try { localStorage.removeItem('pos_currentCustomer') } catch (e) {}
-          setNewCustomerName('')
-          setNewCustomerCity('')
-          setNewCustomerPhone('')
-          setDuplicateCustomer(null)
-          alert((res.server ? 'Order sent to kitchen (id: ' : 'Order saved locally (id: ') + (order && order.id) + ')')
-        } else {
-          alert('Failed to place order')
+    try {
+      const res = await placeOrder(cart, { settings, currentCustomer, products, paymentType: opts.paymentType, paymentReference: opts.paymentReference })
+      if (res && res.ok) {
+        // Only finalize (print/clear) when caller doesn't request to skip post-placement actions
+        if (!opts.skipPostPlacement) {
+          await finalizeOrderActions(res.order, { paymentType: opts.paymentType })
         }
-      } catch (err) {
-        console.debug('placeOrder failed', err)
+        return res
+      } else {
         alert('Failed to place order')
+        return res
       }
-    })()
+    } catch (err) {
+      console.debug('placeOrder failed', err)
+      alert('Failed to place order')
+      return { ok: false }
+    }
+  }
+
+  function sendToKitchenForOrder(order, opts = {}) {
+    // Trigger the post-placement actions for a pre-existing order (print & clear)
+    if (!order) return
+    finalizeOrderActions(order, { paymentType: opts.paymentType })
   }
 
   function applyRewardProduct(productId) {
@@ -466,7 +483,7 @@ export default function App() {
             <div style={{marginTop:8,fontSize:13,color:'#333'}}>Selected: <strong>{currentCustomer.name}</strong> — {currentCustomer.phone}{currentCustomer.city ? ' — ' + currentCustomer.city : ''} <button type="button" className="product-btn" onClick={()=>{ setCurrentCustomer(null); try{ localStorage.removeItem('pos_currentCustomer') }catch(e){} }} style={{marginLeft:8}}>Clear</button></div>
           )}
         </div>
-        <Receipt items={cart} onRemove={removeItem} onClear={clearCart} settings={settings} customer={currentCustomer} onSend={features.sendToKitchen ? saveOrder : undefined} products={products} onApplyReward={applyRewardProduct} features={features} />
+        <Receipt items={cart} onRemove={removeItem} onClear={clearCart} settings={settings} customer={currentCustomer} onSend={features.sendToKitchen ? saveOrder : undefined} onPlaceOrder={saveOrder} onOrderPlaced={sendToKitchenForOrder} products={products} onApplyReward={applyRewardProduct} features={features} />
           {keyboardTarget && (
             <VirtualKeyboard mode={keyboardTarget.mode || 'text'} onKey={vk_onKey} onBackspace={vk_backspace} onEnter={vk_enter} onClose={detachKeyboard} />
           )}

@@ -1,5 +1,5 @@
 {
-  "ordersView": false,
+  "ordersView": true,
   "sendToKitchen": true,
   "serverSave": true,
   "clientSearch": true,

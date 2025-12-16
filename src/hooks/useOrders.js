@@ -9,7 +9,7 @@ export default function useOrders(defaults) {
 
   function genOrderId() { return 'o' + Date.now().toString(36) + Math.random().toString(36).slice(2,6) }
 
-  async function placeOrder(cart, { settings, currentCustomer, products, paymentType } = {}) {
+  async function placeOrder(cart, { settings, currentCustomer, products, paymentType, paymentReference } = {}) {
     if (!cart || cart.length === 0) throw new Error('empty_cart')
     const taxRate = settings && settings.taxRate != null ? settings.taxRate : 8
     const subtotal = cart.reduce((s, it) => s + (it.price + ((it.addons||[]).reduce((a,x)=>a+(x.price||0),0))) * it.qty, 0)
@@ -34,6 +34,7 @@ export default function useOrders(defaults) {
       tax,
       total,
       paymentType: paymentType || 'cash',
+      paymentReference: paymentReference || null,
       paymentFeePercent: feePercent,
       paymentFee,
       totalWithFee,
