@@ -5,6 +5,6 @@
   "taxRate": 6.25,
   "footerNote": "Gracias por su compra!",
   "logo": "/assets/logo.png",
-  "stripePublishableKey": "pk_test_kP5NEAkzVV3aaxkebYTeU3yn0087wRHEjR",
-  "stripeSecretKey": "sk_test_JNY1XUQ4OcfEjt7DevljAS2R00rUL8cb7i"
+  "stripePublishableKey": "",
+  "stripeSecretKey": ""
 }
