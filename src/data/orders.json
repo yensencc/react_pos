@@ -1906,5 +1906,52 @@
     "status": "sent",
     "canceled": false,
     "cancelReason": ""
+  },
+  {
+    "id": "omlh11qovtiqx",
+    "createdAt": "2026-02-10T20:02:05.023Z",
+    "customer": null,
+    "items": [
+      {
+        "lineId": "mlh112dv271lh5",
+        "id": 1,
+        "name": "Cheeseburger",
+        "price": 6.5,
+        "qty": 2,
+        "addons": [
+          {
+            "id": 102,
+            "name": "Bacon",
+            "price": 1.25
+          }
+        ]
+      },
+      {
+        "lineId": "mlh11abg5tfnjj",
+        "id": 2,
+        "name": "Veggie Burger",
+        "price": 6,
+        "qty": 1,
+        "addons": [
+          {
+            "id": 101,
+            "name": "Extra Cheese",
+            "price": 0.75
+          }
+        ]
+      }
+    ],
+    "subtotal": 22.25,
+    "taxRate": 6.25,
+    "tax": 1.390625,
+    "total": 23.640625,
+    "paymentType": "debit",
+    "paymentReference": null,
+    "paymentFeePercent": 0,
+    "paymentFee": 0,
+    "totalWithFee": 23.64,
+    "status": "sent",
+    "canceled": false,
+    "cancelReason": ""
   }
 ]

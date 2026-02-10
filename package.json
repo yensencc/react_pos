@@ -2,9 +2,10 @@
   "name": "react-pos-teller-demo",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "vite",
-    "server": "node server/index.js",
+    "server": "node server/index.cjs",
     "start:all": "concurrently \"npm run server\" \"npm run dev\"",
     "build": "vite build",
     "preview": "vite preview"
@@ -20,6 +21,7 @@
     "stripe": "^11.13.0"
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
     "concurrently": "^8.0.0",
     "vite": "^5.0.0"
   }
